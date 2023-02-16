@@ -27,6 +27,6 @@ class PenguinViewTest(TestCase):
         response = client.get('/api/penguins/', format='json')
         
         # Assert response is successful and matches all penguin data
-        assert response != None
+        assert response is not None
         assert response.status_code == status.HTTP_200_OK
         assert response.json() == expected_data

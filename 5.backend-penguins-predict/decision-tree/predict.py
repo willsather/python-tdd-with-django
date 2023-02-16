@@ -14,7 +14,7 @@ new_data = [{'bill_length_mm': 39.1, 'bill_depth_mm': 18.7, 'flipper_length_mm':
 # Creates DataFrame for new data.
 new_df = pd.DataFrame(new_data)
 
-loaded_model = joblib.load('finalizedDecisionTree.sav')
+loaded_model = joblib.load('Predict_PenguinSpecies_DecisionTree_Model.sav')
 new_pred = loaded_model.predict(new_df)
 
 print(f'Predicted Species: {new_pred}')

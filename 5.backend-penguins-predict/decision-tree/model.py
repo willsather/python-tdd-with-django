@@ -2,11 +2,14 @@ import pandas as pd
 import joblib
 
 from sklearn.tree import DecisionTreeClassifier
-# from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split
 
 from accuracy import accuracy
 from save_figure import save_figure
 
+# This example read from a local CSV file for simplicity,
+# but your data source can come from anywhere.  As you scale,
+# there exist tools to help manage large datasets
 df = pd.read_csv("./penguins.csv")
 df = df.dropna()
 
@@ -23,12 +26,15 @@ y = df['species']
 # Give example of datasets before and after one hot encoding
 X_encoded = pd.get_dummies(X, drop_first=True)
 
+print(X_encoded.head())
+
 # Split up training and testing data
-# For testing and fine tuning the model, use TDD approach to train model
+# For testing and fine-tuning the model, use TDD approach to train model
 # X_train, X_test, y_train, y_test = train_test_split(X_encoded, y, test_size=0.2)
 
 # Create Decision Tree classifier object
 model = DecisionTreeClassifier()
+
 
 # Train Decision Tree Classifier
 # model = model.fit(X_train, y_train)
@@ -42,7 +48,7 @@ model = model.fit(X_encoded, y)
 save_figure(model=model, feature_names=X_encoded.columns)
 
 # Save model
-joblib.dump(model, 'finalizedDecisionTree.sav')
+joblib.dump(model, '../Predict_PenguinSpecies_DecisionTree_Model.sav')
 
 
 

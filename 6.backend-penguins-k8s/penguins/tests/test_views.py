@@ -26,7 +26,7 @@ class PenguinViewTest(TestCase):
         response = client.get('/api/penguins/', format='json')
         
         # Assert response is successful and matches all penguin data
-        assert response != None
+        assert response is not None
         assert response.status_code == status.HTTP_200_OK
         assert response.json() == expected_data
 
@@ -38,7 +38,7 @@ class PenguinViewTest(TestCase):
 
         # call `POST` with new Penguin object
         post_response = client.post('/api/penguins/', {'island': 'fakeIslandName', 'body_mass': 300, 'gender': 'N/A'}, format='json')
-        assert post_response != None
+        assert post_response is not None
         assert post_response.status_code == status.HTTP_201_CREATED
 
         # `GET` all penguins from server
@@ -76,7 +76,7 @@ class PenguinViewTest(TestCase):
         assert response.status_code == status.HTTP_200_OK
 
         # Assert penguins are equal
-        assert response != None
+        assert response is not None
         assert response.status_code == status.HTTP_200_OK
         assert response.json() == expected_data
 
@@ -90,6 +90,6 @@ class PenguinViewTest(TestCase):
         response = client.put(f'/api/penguins/{primary_key}/', new_penguin, format='json')
 
         # Assert response is successful and penguin data is updated
-        assert response != None
+        assert response is not None
         assert response.status_code == status.HTTP_200_OK
         assert response.json() == expected_data
