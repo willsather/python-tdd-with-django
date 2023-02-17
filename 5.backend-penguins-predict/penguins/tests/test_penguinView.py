@@ -12,10 +12,10 @@ class PenguinViewTest(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-        Penguin.objects.create(island='fakeIsland1', body_mass_g=0, sex='female', bill_length_mm=0.0,
-                               bill_depth_mm=0.0, flipper_length_mm=0)
-        Penguin.objects.create(island='fakeIsland2', body_mass_g=0, sex='male', bill_length_mm=0.0,
-                               bill_depth_mm=0.0, flipper_length_mm=0)
+        Penguin.objects.create(island='fakeIsland1', body_mass_g=10, sex='female', bill_length_mm=10.0,
+                               bill_depth_mm=10.0, flipper_length_mm=10)
+        Penguin.objects.create(island='fakeIsland2', body_mass_g=10, sex='male', bill_length_mm=10.0,
+                               bill_depth_mm=10.0, flipper_length_mm=10)
 
     @pytest.mark.django_db
     def test_get_all_penguins(self):
@@ -38,7 +38,10 @@ class PenguinViewTest(TestCase):
         assert penguins.count() == 2
 
         # call `POST` with new Penguin object
-        post_response = client.post('/api/penguins/', {'island': 'fakeIslandName', 'body_mass': 300, 'gender': 'N/A'},
+        post_response = client.post('/api/penguins/',
+                                    {'island': 'fakeIsland1', 'body_mass_g': 10, 'sex': 'female',
+                                     'bill_length_mm': 10.0, 'bill_depth_mm': 10.0,
+                                     'flipper_length_mm': 10},
                                     format='json')
         assert post_response is not None
         assert post_response.status_code == status.HTTP_201_CREATED

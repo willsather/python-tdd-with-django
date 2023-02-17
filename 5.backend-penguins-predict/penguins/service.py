@@ -4,21 +4,14 @@ import pandas as pd
 from penguins.models import Penguin
 
 
-def predict(penguin):
+def predict(penguin: Penguin) -> str:
+    # Load Decision Tree Model from Joblib export
     loaded_model = joblib.load('Predict_PenguinSpecies_DecisionTree_Model.sav')
 
-    print(penguin)
+    # Create Pandas DataFrame using a formatted penguin object
+    df = pd.DataFrame([penguin.formatted_data()])
 
-    formatted_data = {'bill_length_mm': penguin.bill_length_mm, 'bill_depth_mm': penguin.bill_depth_mm,
-                      'flipper_length_mm': penguin.flipper_length_mm, 'body_mass_g': penguin.body_mass_g,
-                      'island_Dream': penguin.island == 'Dream', 'island_Torgersen': penguin.island == 'Torgersen',
-                      'sex_male': penguin.sex == 'MALE'}
-
-    df = pd.DataFrame([formatted_data])
-
-    print(df.head())
-
+    # Predict species using the model and the dataframe
     prediction = loaded_model.predict(df)
-    # prediction = "This is a prediction"
 
     return prediction

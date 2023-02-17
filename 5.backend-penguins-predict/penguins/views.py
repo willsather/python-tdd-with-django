@@ -25,7 +25,6 @@ class PenguinPredictController(GenericAPIView):
 
         if serializer.is_valid():
             penguin = Penguin.objects.create(**serializer.validated_data)
-            print(penguin)
             prediction = predict(penguin)
 
             return Response(prediction, status=status.HTTP_200_OK)
