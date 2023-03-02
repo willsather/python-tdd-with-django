@@ -8,4 +8,4 @@ def save_figure(model, feature_names):
     tree.plot_tree(model,
                    filled=True,
                    feature_names=feature_names)
-    fig.savefig("new-decision-tree.png")
+    fig.savefig("./assets/calculated-penguin-decision-tree.png")

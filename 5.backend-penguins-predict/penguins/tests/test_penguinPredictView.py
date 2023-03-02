@@ -1,10 +1,14 @@
 import pytest
+import mock
+
 from django.test import TestCase
+from mock.mock import Mock
 from rest_framework import status
 from rest_framework.exceptions import ValidationError
 from rest_framework.test import APIClient
 
 from ..serializer import PenguinSerializer
+from ..service import PenguinService
 
 client = APIClient()
 
@@ -32,6 +36,7 @@ class PenguinPredictViewTest(TestCase):
         assert response.status_code == status.HTTP_400_BAD_REQUEST
 
     @pytest.mark.django_db
+    @mock.patch.object(PenguinService, 'predict', Mock(return_value=["Adelie"]))
     def test_post_predict_penguin_adelie(self):
         # call `POST` with Penguin object
         response = client.post('/api/penguins/predict/',
@@ -44,6 +49,7 @@ class PenguinPredictViewTest(TestCase):
         assert response.json() == ["Adelie"]
 
     @pytest.mark.django_db
+    @mock.patch.object(PenguinService, 'predict', Mock(return_value=["Gentoo"]))
     def test_post_predict_penguin_gentoo(self):
         # call `POST` with Penguin object
         response = client.post('/api/penguins/predict/',
@@ -56,6 +62,7 @@ class PenguinPredictViewTest(TestCase):
         assert response.json() == ["Gentoo"]
 
     @pytest.mark.django_db
+    @mock.patch.object(PenguinService, 'predict', Mock(return_value=["Chinstrap"]))
     def test_post_predict_penguin_chinstrap(self):
         # call `POST` with Penguin object
         response = client.post('/api/penguins/predict/',

@@ -2,7 +2,7 @@ from django.test import TestCase
 
 from ..models import Penguin
 from ..serializer import PenguinSerializer
-from ..service import predict
+from ..service import PenguinService
 
 
 class ServiceTest(TestCase):
@@ -16,7 +16,7 @@ class ServiceTest(TestCase):
         penguin = Penguin.objects.create(**serializer.validated_data)
 
         # Make prediction
-        prediction = predict(penguin)
+        prediction = PenguinService.predict(penguin)
 
         assert prediction == "Adelie"
 
@@ -29,7 +29,7 @@ class ServiceTest(TestCase):
         penguin = Penguin.objects.create(**serializer.validated_data)
 
         # Make prediction
-        prediction = predict(penguin)
+        prediction = PenguinService.predict(penguin)
 
         assert prediction == "Gentoo"
 
@@ -42,6 +42,6 @@ class ServiceTest(TestCase):
         penguin = Penguin.objects.create(**serializer.validated_data)
 
         # Make prediction
-        prediction = predict(penguin)
+        prediction = PenguinService.predict(penguin)
 
         assert prediction == "Chinstrap"

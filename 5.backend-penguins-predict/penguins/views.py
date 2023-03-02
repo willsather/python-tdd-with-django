@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Penguin
 from .serializer import PenguinSerializer
-from .service import predict
+from .service import PenguinService
 
 
 class PenguinController(ListCreateAPIView):
@@ -25,7 +25,7 @@ class PenguinPredictController(GenericAPIView):
 
         if serializer.is_valid():
             penguin = Penguin.objects.create(**serializer.validated_data)
-            prediction = predict(penguin)
+            prediction = PenguinService.predict(penguin)
 
             return Response(prediction, status=status.HTTP_200_OK)
 
