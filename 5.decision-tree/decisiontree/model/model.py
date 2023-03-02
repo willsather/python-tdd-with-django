@@ -1,5 +1,6 @@
-import pandas as pd
+import os
 import joblib
+import pandas as pd
 
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
@@ -54,11 +55,7 @@ model = model.fit(X_train, y_train)
 accuracy(model, X_test, y_test)
 
 # Save PNG visualization of decision tree
-save_figure(model=model, feature_names=X_encoded.columns)
+# save_figure(model=model, feature_names=X_encoded.columns)
 
-# Save model
-joblib.dump(model, '../Predict_PenguinSpecies_DecisionTree_Model.sav')
-
-
-
-
+# Save model to root of module
+joblib.dump(model, os.path.join(os.path.dirname(__file__), '../Predict_PenguinSpecies_DecisionTree_Model.sav'))

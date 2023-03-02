@@ -1,5 +1,6 @@
-import pandas as pd
+import os
 import joblib
+import pandas as pd
 
 
 def predict(data):
@@ -10,7 +11,9 @@ def predict(data):
     new_df = pd.DataFrame(new_data)
 
     # Load model
-    loaded_model = joblib.load('../Predict_PenguinSpecies_DecisionTree_Model.sav')
+    dirname = os.path.dirname(__file__)
+    loaded_model = joblib.load(
+        os.path.join(os.path.dirname(__file__), '../Predict_PenguinSpecies_DecisionTree_Model.sav'))
 
     # Create new prediction with dataframe
     return loaded_model.predict(new_df)
