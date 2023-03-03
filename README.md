@@ -2,8 +2,6 @@
 
 ### Python REST DRF Learning Path
 
-## Section 0: Introduction
-
 The goal of this repository is to create a series of content about building Python application using Django REST
 Framework.
 
@@ -15,6 +13,15 @@ real-world_ example to a data science project as possible, while documenting all
 [`/docs`](./docs) contains the 7 different Markdown documents that respectively align with the 7 different directories
 in the repository. Each directory contains an individual virtual environment and _should_ be able to be opened in any
 editor to easily run the tests and server.
+
+## Section 0: Introduction
+
+- Why Python is important
+- Primary Goals / Objectives
+  - Maybe list out
+- Overview on what is being built
+- What is the endpoint about (`Penguins`)
+- List of each section / respective topics
 
 ## Section 1: Setup Environment
 
