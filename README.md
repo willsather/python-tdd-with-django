@@ -4,15 +4,17 @@
 
 ## Section 0: Introduction
 
-This repository is in the works to create a series of Python / Django REST Framework / data science.
+The goal of this repository is to create a series of content about building Python application using Django REST
+Framework.
+
+Also, the intent was to use this DRF application to service a data science / machine learning model, and create the
+whole thing by TDDing in Python. The hope was to not only build out various stages of an application, but also
+demonstrate _one_ strategy for writing tests for machine learning. In doing so, I goaled for creating as close to a _
+real-world_ example to a data science project as possible, while documenting all the work I did building it. 
 
 [`/docs`](./docs) contains the 7 different Markdown documents that respectively align with the 7 different directories
 in the repository. Each directory contains an individual virtual environment and _should_ be able to be opened in any
 editor to easily run the tests and server.
-
-The hope of this repository and maybe future work is to create as close to a _real-world_ example to a data science
-project as possible. The hope is to have this setup in a way that is easy to follow the path (or story) I took to
-achieve this and well document it.
 
 ## Section 1: Setup Environment
 
@@ -63,8 +65,6 @@ achieve this and well document it.
 Note: Previously the `Penguin` object had only two properties, now there exists 5 more properties. To add properties,
 you must do a db migration.
 
-* Uses default values for database rows that don't have those columns (FEATURES!!)
-
 - TDD
     - Write `POST /predict` test with the `POST /predict` endpoint
         - Basic POST and returns a static value
@@ -77,6 +77,7 @@ you must do a db migration.
 ## Section 7: Deploy Python Application using Docker and Kubernetes
 
 - Python Application Containerization using Docker
+  - Maybe using Cloud Native build packs?
 - K8S configuration
 - Simplify YAML using Tanzu Applications
 
