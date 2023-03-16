@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from ..model.predict import predict
+from ..predict import predict
 
 
 class PenguinPredictTest(TestCase):
